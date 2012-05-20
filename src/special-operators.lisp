@@ -1,5 +1,5 @@
 (in-package #:parenscript)
-(in-readtable :parenscript)
+#+nil (in-readtable :parenscript)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; arithmetic and logic

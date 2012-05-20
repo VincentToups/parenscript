@@ -1,5 +1,5 @@
 (in-package #:parenscript)
-(in-readtable :parenscript)
+#+nil (in-readtable :parenscript)
 
 (defvar *ps-print-pretty* t)
 (defvar *indent-num-spaces* 4)

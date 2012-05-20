@@ -32,12 +32,12 @@ paren-script becomes parenScript, *some-global* becomes SOMEGLOBAL."
                                                                "lessthan" "greaterthan" "caret")
                                                              it)
                                                        acc))
-                                      (t (write-char (cond ((and lowercase (not all-uppercase)) (char-downcase c))
-                                                           (t (char-upcase c)))
+                                      (t (write-char (cond ((and lowercase (not all-uppercase)) #+nil (char-downcase c) c) ;; Vincent patched this to get "modern mode" support.
+                                                           (t (char-upcase c) ))
                                                      acc)
                                          (setf lowercase t)))))))
-                    ((every #'upper-case-p (remove-if-not #'alpha-char-p identifier)) (string-downcase identifier))
-                    ((every #'lower-case-p (remove-if-not #'alpha-char-p identifier)) (string-upcase identifier))
+                    #+nil ((every #'upper-case-p (remove-if-not #'alpha-char-p identifier)) (string-downcase identifier))
+                    #+nil ((every #'lower-case-p (remove-if-not #'alpha-char-p identifier)) (string-upcase identifier))
                     (t identifier))))))
 
 (defun ordered-set-difference (list1 list2 &key (test #'eql)) ; because the CL set-difference may not preserve order

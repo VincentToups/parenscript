@@ -2,16 +2,19 @@
 
 (pushnew :parenscript *features*)
 
+#+nil
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (unless (named-readtables:find-readtable :parenscript)
     (named-readtables:defreadtable :parenscript
       (:merge :standard)
-      (:case :invert))))
+      (:case :preserve)
+      )))
 
+#+nil
 (named-readtables:in-readtable :parenscript)
 
 (defpackage #:parenscript
-  (:use #:cl #:anaphora #:named-readtables)
+  (:use #:cl #:anaphora #+nil #:named-readtables)
   (:nicknames #:ps)
   (:export
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -89,7 +92,8 @@
    ;; literals
    #:t
    #:f
-   #.(symbol-name 'nil) ; for case-sensitive Lisps like some versions of Allegro
+   ;#.(symbol-name 'nil) ; for case-sensitive Lisps like some versions of Allegro
+   #:nil
    #:this
    #:undefined
    #:{}

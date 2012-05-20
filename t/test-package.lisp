@@ -1,5 +1,5 @@
 (in-package #:cl)
-(named-readtables:in-readtable :parenscript)
+#+nil (named-readtables:in-readtable :parenscript)
 
 (defpackage #:ps-test
   (:use #:cl #:parenscript #:eos)

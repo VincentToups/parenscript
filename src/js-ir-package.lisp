@@ -1,5 +1,5 @@
 (in-package #:parenscript)
-(in-readtable :parenscript)
+#+nil (in-readtable :parenscript)
 
 (defpackage #:ps-js
   (:shadowing-import-from #:cl

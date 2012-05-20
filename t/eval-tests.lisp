@@ -3,7 +3,7 @@
 ;; file is offered as-is, without any warranty.
 
 (in-package #:ps-eval-tests)
-(named-readtables:in-readtable :parenscript)
+#+nil (named-readtables:in-readtable :parenscript)
 
 (in-suite ps-test::eval-tests)
 

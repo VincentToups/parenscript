@@ -1,5 +1,5 @@
 (in-package #:parenscript)
-(in-readtable :parenscript)
+#+nil (in-readtable :parenscript)
 
 ;;; PS operators and macros that aren't present in the Common Lisp
 ;;; standard but exported by Parenscript, and their Common Lisp

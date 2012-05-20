@@ -1,5 +1,5 @@
 (in-package #:parenscript)
-(in-readtable :parenscript)
+#+nil (in-readtable :parenscript)
 
 (defvar *version* 2.3 "Parenscript compiler version.")
 
@@ -305,3 +305,4 @@ gensym-prefix-string)."
        `(let* (,,@(mapcar (lambda (g v) ``(,,g ,,v)) gensyms vars))
           ,(let ,(mapcar (lambda (g v) `(,v ,g)) gensyms vars)
              ,@body)))))
+
