@@ -99,7 +99,8 @@ vice-versa.")
 
 (defmethod ps-print ((s symbol))
   (if (keywordp s)
-      (ps-print (string-downcase s))
+      #+nil  (ps-print (string-downcase s)) ;; VINCENT
+      (ps-print (symbol-name s))
       (psw (symbol-to-js-string s))))
 
 (defmethod ps-print ((compiled-form cons))
