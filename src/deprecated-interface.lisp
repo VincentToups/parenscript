@@ -4,11 +4,17 @@
 (define-condition simple-style-warning (style-warning simple-warning)
   ())
 
+(defvar *warn-deprecated-cache* (make-hash-table :test 'equal))
 (defun warn-deprecated (old-name &optional new-name)
   #+nil (warn 'simple-style-warning
 			  :format-control "~:@(~a~) is deprecated~:[.~;, use ~:@(~a~) instead~]"
 			  :format-arguments (list old-name new-name new-name))
-  (apply #'format t "PARENSCRIPT NOTIFICATION: ~:@(~a~) is deprecated~:[.~;, use ~:@(~a~) instead~]~%" (list old-name new-name new-name)))
+  (let ((message (apply #'format 
+						nil "PARENSCRIPT NOTIFICATION: ~:@(~a~) is deprecated~:[.~;, use ~:@(~a~) instead~]~%" 
+						(list old-name new-name new-name))))
+	(when (not (gethash message *warn-deprecated-cache*))
+	  (format t message)
+	  (setf (gethash message *warn-deprecated-cache*) t))))
 
 (defmacro defun-js (old-name new-name args &body body)
   `(defun ,old-name ,args
